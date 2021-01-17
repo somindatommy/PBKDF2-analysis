@@ -56,7 +56,8 @@ public class Implementation {
                     passwordArrayInCharArray("Resources/Passwords/" + passwordLength + "letterpasswords.txt");
 
             for (count = 0; count < 100; count++) { // TODO: 202
-                // TODO: 2021-01-12 exception throwing reasons specify.1-01-07 create a seperate method since it duplicating
+                // TODO: 2021-01-12 exception throwing reasons specify.
+                //  create a seperate method since it duplicating
                 String generatedSecuredPasswordHash = generateStrongPasswordHash(passwordCharArray.get(count),
                         mySalts.get(count), iterations, keyLength);
             }
@@ -118,7 +119,7 @@ public class Implementation {
 
     /**
      * This method is responsible for reading the salt value from a file which contains the salt in each line.
-     *
+     * @param filename the filename which has the sats.
      * @return String array list which contains all the salt values.
      */
     private static ArrayList<String> readSaltValuesFromFile(String filename) {
@@ -135,7 +136,7 @@ public class Implementation {
             myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
-            e.printStackTrace();// TODO: 2021-01-07 end the flow while FileNotFoundException
+            e.printStackTrace(); // TODO: 2021-01-07 end the flow while FileNotFoundException
         }
         return salt;
     }
@@ -170,16 +171,16 @@ public class Implementation {
         ArrayList<char[]> passwordArray = new ArrayList<>();
         File myObj = new File(filename);
         Scanner myReader = new Scanner(myObj);
-        int count = 0;
+
         while (myReader.hasNextLine()) {
             String password = myReader.nextLine();
             char[] chars = password.toCharArray();
             passwordArray.add(chars);
-            count++;
         }
         myReader.close();
         return passwordArray;
     }
 }
+
 // TODO: 2021-01-13 recommended derived key length
 // TODO: 2021-01-13 recommended salt length
